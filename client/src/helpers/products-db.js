@@ -20,8 +20,6 @@ export const getAllProducts = async (category = "all") => {
    try {
       const { data } = await axios.get(URL);
 
-      console.log(data);
-
       return [data.products, null];
    } catch (error) {
       return [null, error.message];

@@ -30,7 +30,6 @@ const Register = () => {
 
    const handleRegisterUser = async (formData) => {
       const [registerRes, error] = await registerUser(formData);
-      console.log(error);
 
       if (error) return setError("Fallo al registrarse");
 

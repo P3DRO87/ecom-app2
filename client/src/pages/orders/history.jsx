@@ -6,8 +6,6 @@ import React from "react";
 import { MdOutlineCreditCardOff, MdOutlineCreditScore } from "react-icons/md";
 
 const History = ({ orders }) => {
-   console.log(orders);
-
    return (
       <div className="page-orders-history my-5">
          <div className="container">

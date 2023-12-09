@@ -57,7 +57,6 @@ export const getUserOrders = async (token) => {
 export const payOrder = async ({ id, orderId, amount, token }) => {
    const URL = `${BASE_URL}/orders/pay`;
 
-   console.log(amount);
    try {
       const body = { amount, id, orderId };
 

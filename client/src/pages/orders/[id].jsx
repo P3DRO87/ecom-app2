@@ -63,8 +63,6 @@ const Order = ({ order }) => {
       setIsOrderPaid(true);
    };
 
-   console.log(!order.isPaid || !isOrderPaid);
-
    return (
       <div className="order-page mt-5">
          <div className="container">
