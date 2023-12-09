@@ -1,0 +1,17 @@
+.order-page {
+   .stripe-card-element {
+      border: 1px solid #d3d3d3;
+      padding: 0.5rem;
+      border-radius: 0.3rem;
+   }
+   .pay-btn {
+      svg {
+         width: 30px;
+         height: 30px;
+      }
+   }
+   .credit-card-error-msg {
+      margin-left: 1rem;
+      color: #d32f2f;
+   }
+}

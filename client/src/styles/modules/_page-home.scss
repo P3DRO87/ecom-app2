@@ -1,0 +1,92 @@
+.main-hero {
+   .main-hero-content {
+      margin: auto;
+      margin-bottom: 8svh;
+      padding: 10px 0;
+      .content-container {
+         padding: 10px 15px;
+         border-radius: 5px;
+      }
+   }
+   .main-text {
+      color: var(--secondary);
+      font-size: 2rem;
+      border-top: 1px solid #d3d3d3;
+      border-bottom: 1px solid #d3d3d3;
+      padding: 20px 0;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slide-to-up ease-out 0.8s forwards;
+      @media only screen and (max-width: 575px) {
+         font-size: 1.8rem;
+      }
+   }
+   .see-products {
+      color: var(--dark-secondary);
+      background: var(--secondary);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: auto;
+      width: 50%;
+      margin-top: 1rem;
+      border-radius: 4px;
+      transition: background ease 0.3s, color ease 0.3s, border ease 0.3s;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: slide-to-up ease-out 0.8s forwards;
+      animation-delay: 0.3s;
+      @media only screen and (max-width: 575px) {
+         width: 90%;
+      }
+      &:hover {
+         background: transparent;
+         border: 1px solid var(--secondary);
+         color: var(--secondary);
+      }
+      .arrow-icon {
+         width: 22px;
+         height: 22px;
+         margin-left: 0.5rem;
+         transition: ease 0.3s opacity, ease 0.3s transform;
+         transform: rotate(180deg);
+         animation: float infinite ease-out 3s;
+      }
+   }
+}
+
+@keyframes slide-to-up {
+   0% {
+      opacity: 0;
+      transform: translateY(30px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+@keyframes float {
+   50% {
+      transform: translateY(2px) rotate(180deg);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translateY(0) rotate(180deg);
+   }
+}
+
+.products-section {
+   margin-top: 4rem;
+}
+
+.all-products-title {
+   font-weight: bold;
+   color: var(--dark-secondary);
+   margin-bottom: 2.7rem;
+   svg {
+      margin-left: 0.5rem;
+      width: 35px;
+      height: 35px;
+   }
+}

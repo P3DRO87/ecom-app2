@@ -1,0 +1,13 @@
+.product-card-item {
+   border-radius: 4px;
+   display: block;
+   color: #000000;
+   height: auto;
+   position: relative;
+   &:hover {
+      color: var(--dark-secondary);
+   }
+   .product-title {
+      color: var(--dark-secondary);
+   }
+}

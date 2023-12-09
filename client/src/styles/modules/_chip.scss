@@ -1,0 +1,27 @@
+.chip {
+   border-radius: 45px;
+   padding: 5px;
+   width: fit-content;
+   min-width: 5rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   &.success {
+      border: 1px solid #2e7d32;
+      color: #2e7d32;
+      svg {
+         fill: #2e7d32;
+      }
+   }
+   &.error {
+      border: 1px solid #d32f2f;
+      color: #d32f2f;
+      svg {
+         fill: #d32f2f;
+      }
+   }
+   svg {
+      width: 20px;
+      height: 20px;
+   }
+}

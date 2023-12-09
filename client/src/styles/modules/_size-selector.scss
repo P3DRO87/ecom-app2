@@ -1,0 +1,12 @@
+.size-selector {
+   display: flex;
+   margin-bottom: 1rem;
+   gap: 1rem;
+   flex-wrap: wrap;
+   button {
+      border: 1px solid #d3d3d3;
+      border-radius: 4px;
+      padding: 10px 15px;
+      min-width: 4.5rem;
+   }
+}

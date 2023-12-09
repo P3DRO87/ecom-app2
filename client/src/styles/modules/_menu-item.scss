@@ -1,0 +1,51 @@
+.menu-item {
+   position: relative;
+   cursor: pointer;
+   &.active {
+      .pointer-arrow {
+         rotate: 180deg;
+      }
+   }
+   .pointer-arrow {
+      rotate: 0deg;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      margin-right: 15px;
+      width: 25px;
+      height: 25px;
+      fill: rgba(0, 0, 0, 0.54);
+   }
+   .selection-menu {
+      margin-top: -2rem;
+      position: absolute;
+      background: #fafafa;
+      padding: 0.5rem 0;
+      overflow-y: auto;
+      border-radius: 3px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      transition: opacity ease-in-out 0.2s, transform ease-in-out 0.2s;
+      opacity: 0;
+      transform: scale(0.5);
+      min-height: 20px;
+      max-height: (calc(100% + 30svh));
+      top: -2svh;
+      &.active {
+         opacity: 1;
+         transform: scale(1);
+      }
+      li {
+         padding: 10px 15px;
+         list-style: none;
+         transition: background ease 0.3s;
+         &:hover {
+            background: var(--secondary);
+         }
+      }
+   }
+}

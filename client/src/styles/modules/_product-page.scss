@@ -1,0 +1,14 @@
+.product-page {
+   .btn-add-cart {
+      color: #fff;
+      min-width: 10rem;
+      padding: 8px 10px;
+   }
+   .size-selector {
+      button {
+         &.btn-primary {
+            border-color: var(--dark-secondary);
+         }
+      }
+   }
+}
