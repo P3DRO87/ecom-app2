@@ -15,7 +15,7 @@ export const getProduct = async ({ slug, serverUrl = "" }) => {
 };
 
 export const getAllProducts = async (category = "all") => {
-   const URL = `${BASE_URL}/products?category=${"all"}`;
+   const URL = `${BASE_URL}/products?category=${category}`;
 
    try {
       const { data } = await axios.get(URL);

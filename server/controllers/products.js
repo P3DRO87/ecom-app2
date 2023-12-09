@@ -8,6 +8,7 @@ const getProducts = async (req, res = response) => {
 
    let condition = {};
 
+   console.log(category);
    if (category !== "all" && VALID_CATEGORIES.includes(category)) {
       condition = { category };
    }
