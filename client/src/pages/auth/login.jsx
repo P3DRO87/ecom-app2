@@ -31,7 +31,7 @@ const Login = () => {
    const handleLogin = async (formData) => {
       const [loginRes, error] = await loginUser(formData);
 
-      if (error) return setError("Credenciales invalidas");
+      if (error) return setError(error);
 
       const { user, token } = loginRes;
 
