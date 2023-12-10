@@ -3,7 +3,7 @@ import { setIsNavbarActive } from "@/redux/uiDux";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useId } from "react";
+import React, { useEffect, useId, useState } from "react";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { IoMdFemale, IoMdMale } from "react-icons/io";
 import {
@@ -24,7 +24,16 @@ const SidebarMenu = () => {
    const { isNavbarActive } = useSelector((state) => state.ui);
    const inputId = useId();
 
+   const [searchQuery, setSearchQuery] = useState("");
+
    const handleCloseSideMenu = () => {
+      dispatch(setIsNavbarActive(false));
+   };
+
+   const handleSearchQuery = () => {
+      if (!searchQuery.trim()) return;
+
+      router.push(`/search/${searchQuery}`);
       dispatch(setIsNavbarActive(false));
    };
 
@@ -47,8 +56,14 @@ const SidebarMenu = () => {
          <div className="nav-menu-panel">
             <div className="search-input-container">
                <label className="input-container" htmlFor={inputId}>
-                  <HiMiniMagnifyingGlass />
-                  <input placeholder="Buscar..." type="text" />
+                  <HiMiniMagnifyingGlass onClick={handleSearchQuery} />
+                  <input
+                     autoFocus={true}
+                     onChange={({ target }) => setSearchQuery(target.value)}
+                     onKeyUp={({ key }) => key === "Enter" && handleSearchQuery()}
+                     placeholder="Buscar..."
+                     type="text"
+                  />
                </label>
             </div>
             <div className="options-container">

@@ -14,7 +14,7 @@ const getProducts = async (req, res = response) => {
 
    try {
       const products = await Product.find(condition)
-         .select("title images price inStock slug -_id")
+         .select("title images price inStock slug sizes type -_id")
          .lean();
 
       res.json({ products });

@@ -1,0 +1,15 @@
+.page-admin-products {
+   .create-product-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+         width: 28px;
+         height: 28px;
+      }
+   }
+   img {
+      height: 50px;
+      object-fit: cover;
+   }
+}

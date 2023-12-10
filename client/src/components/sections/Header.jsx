@@ -55,7 +55,10 @@ const Header = () => {
                </div>
                <div className="col-lg-3 col-md-3 col-5 d-flex align-items-center justify-content-end">
                   <nav className="nav-items">
-                     <button className="nav-item search-btn d-md-flex d-none">
+                     <button
+                        onClick={handleOpenSideMenu}
+                        className="nav-item search-btn d-md-flex d-none"
+                     >
                         <HiMiniMagnifyingGlass />
                      </button>
                      <Link href="/cart" className="nav-item cart-btn">

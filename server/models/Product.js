@@ -32,7 +32,16 @@ const ProductSchema = new Schema(
       type: {
          type: String,
          enum: {
-            values: ["shirts", "pants", "hoodies", "hats"],
+            values: [
+               "shirts",
+               "pants",
+               "hoodies",
+               "hats",
+               "camisas",
+               "pantalones",
+               "sueteres",
+               "prendas",
+            ],
             message: "{VALUE} is not a valid type",
          },
       },

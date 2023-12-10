@@ -86,7 +86,9 @@ export default function Home({ products = [] }) {
 }
 
 export const getServerSideProps = async () => {
-   const [products] = await getAllProducts();
+   const [products, error] = await getAllProducts();
+
+   console.log(error);
 
    // if (!products) return { notFound: true };
 
