@@ -3,6 +3,6 @@ const { uploadImages } = require("../controllers/uploads");
 
 const router = Router();
 
-router.post("/images" , uploadImages);
+router.post("/images", uploadImages);
 
 module.exports = router;

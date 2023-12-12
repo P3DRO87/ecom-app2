@@ -103,7 +103,6 @@ const AdminProduct = ({ product }) => {
       setTagInput("");
    };
 
-
    const handleDeleteTag = (tagToDelete) => {
       setTags((prev) => prev.filter((tag) => tag !== tagToDelete));
 

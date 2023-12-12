@@ -11,6 +11,7 @@ node_modules
 *.local
 package-lock.json
 
+/.next/
 **/node_modules
 **/dist
 **/dist-ssr
