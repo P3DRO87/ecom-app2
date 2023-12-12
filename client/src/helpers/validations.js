@@ -11,3 +11,5 @@ export const isValidEmail = (email) => {
 export const isEmail = (email, errMsg) => {
    return isValidEmail(email) || errMsg;
 };
+
+export const isValidImg = (type) => /\image\/(jpg|jpeg|png|gif)$/.test(type);

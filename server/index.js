@@ -1,6 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
+const fileUpload = require("express-fileupload");
 const dbConnection = require("./db/config");
 const cors = require("cors");
 const Product = require("./models/Product");
@@ -24,6 +25,14 @@ app.use(express.json());
 
 dbConnection();
 
+const fileUploadConfig = {
+   useTempFiles: true,
+   tempFileDir: "/tmp/",
+   createParentPath: true,
+};
+
+app.use(fileUpload(fileUploadConfig));
+
 app.get("/api/test", async (req, res) => {
    res.json({ products: "hola" });
 });
@@ -35,6 +44,8 @@ app.use("/api/user", require("./routes/user"));
 app.use("/api/orders", require("./routes/orders"));
 
 app.use("/api/admin", require("./routes/admin"));
+
+app.use("/api/uploads", require("./routes/uploads"));
 
 // nextApp.prepare().then(() => {
 //    app.get("*", (req, res) => {

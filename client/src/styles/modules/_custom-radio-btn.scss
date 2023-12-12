@@ -1,0 +1,37 @@
+.custom-radio-btn {
+   display: flex;
+   width: fit-content;
+   input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+   }
+
+   input:checked ~ .inner-circle:after {
+      display: block;
+   }
+   .inner-circle {
+      cursor: pointer;
+      width: 1.4rem;
+      height: 1.4rem;
+      display: flex;
+      background: none;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      &::after {
+         content: "";
+         display: none;
+         width: 65%;
+         height: 65%;
+         margin: auto;
+         position: absolute;
+         border-radius: 50%;
+         top: 50%;
+         transform: translateY(-50%);
+      }
+   }
+}

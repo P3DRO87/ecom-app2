@@ -5,7 +5,7 @@ export async function middleware(req) {
 
    if (pathname.startsWith("/checkout")) {
       const token = req.cookies.get("token")?.value || "";
-      const cart = req.cookies.get("cart")?.value || "";
+      const cart = req.cookies.get("cart")?.value || [];
 
       const parsedCart = JSON.parse(cart);
 
@@ -33,16 +33,32 @@ export async function middleware(req) {
       return NextResponse.next();
    }
 
-   // if (pathname.startsWith("/admin")) {
-   //    const session = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-   //    const { origin, pathname } = req.nextUrl;
-   //    if (!session) {
-   //       return NextResponse.redirect(`${origin}/auth/login?p=${pathname}`);
-   //    }
-   //    const validRoles = ["admin"];
-   //    if (!validRoles.includes(session.user.user.role)) {
-   //       return NextResponse.redirect(origin);
-   //    }
-   //    return NextResponse.next();
-   // }
+   if (pathname.startsWith("/admin")) {
+      const token = req.cookies.get("token")?.value || "";
+      const { origin, pathname } = req.nextUrl;
+
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/user/renew-session`;
+
+      try {
+         const res = await fetch(url, {
+            method: "GET",
+            headers: { "x-token": token },
+         });
+
+         const data = await res.json();
+
+         const { user } = data;
+
+         if (data.ok === false) throw new Error();
+
+         const validRoles = ["admin"];
+
+         if (!validRoles.includes(user.role)) {
+            return NextResponse.redirect(origin);
+         }
+      } catch (error) {
+         return NextResponse.redirect(`${origin}/auth/login?p=${pathname}`);
+      }
+      return NextResponse.next();
+   }
 }

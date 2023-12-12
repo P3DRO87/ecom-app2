@@ -31,10 +31,12 @@ const Login = () => {
    const handleLogin = async (formData) => {
       const [loginRes, error] = await loginUser(formData);
 
-      if (error) return setError(error);
+      if (error) return setError("Fallo al iniciar sesion");
 
       const { user, token } = loginRes;
 
+      localStorage.user = JSON.stringify(user);
+      localStorage.token = token;
       Cookies.set("user", JSON.stringify(user));
       Cookies.set("token", token);
 

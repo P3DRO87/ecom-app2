@@ -3,12 +3,7 @@ import Header from "../sections/Header";
 import Head from "next/head";
 import SidebarMenu from "../sections/SidebarMenu";
 
-const Layout = ({
-   title = "Teslo shop",
-   pageDescription = "",
-   imageFullUrl,
-   children,
-}) => {
+const Layout = ({ title = "Ecom app", pageDescription = "", imageFullUrl, children }) => {
    return (
       <>
          <Head>

@@ -1,51 +1,56 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import { isMobileDevice } from "@/helpers/isMobileDevice";
+import React, { forwardRef, useEffect, useState } from "react";
 
 const Textarea = forwardRef(
    (
       {
          label = "",
-         type = "text",
          className = "",
          error = false,
          helperText = "",
+
          ...rest
       },
       ref
    ) => {
-      const [isFocusActive, setIsFocusActive] = useState(false);
-
-      const inputRef = useRef();
+      const [isScrolled, setIsScrolled] = useState(false);
+      const [isMobile, setIsMobile] = useState(null);
 
       useEffect(() => {
-         const input = inputRef.current.querySelector(".text-field");
+         const handleResize = () => {
+            setIsMobile(isMobileDevice());
+         };
 
-         if (input.value) setIsFocusActive(true);
+         handleResize();
+
+         window.addEventListener("resize", handleResize);
+
+         return () => window.removeEventListener("resize", handleResize);
       }, []);
 
       return (
          <>
-            <div className={`label-container${className ? ` ${className}` : ""}`}>
+            <div
+               className={`label-container${className ? ` ${className}` : ""} textarea`}
+            >
                <div
-                  ref={inputRef}
-                  className={`text-field-container${
-                     isFocusActive ? " focus-active" : ""
-                  }${error ? " has-error" : ""}`}
+                  className={`text-field-container focus-active${
+                     error ? " has-error" : ""
+                  }`}
                >
-                  <span className="label-text">{label}</span>
+                  <span
+                     style={{ width: isMobile ? "100%" : "97%" }}
+                     className={`label-text${isScrolled ? ` scroll-active` : ""}`}
+                  >
+                     {label}
+                  </span>
                   <textarea
-                     // ref={inputRef}
                      ref={ref}
                      {...rest}
-                     onBlur={({ target }) => {
-                        if (target.value) return;
-
-                        setIsFocusActive(false);
-                     }}
-                     onFocus={() => {
-                        setIsFocusActive(true);
+                     onScroll={({ currentTarget }) => {
+                        setIsScrolled(currentTarget.scrollTop > 0);
                      }}
                      className="text-field"
-                     type={type}
                   />
                </div>
                {error && <span className="error-msg">{helperText}</span>}

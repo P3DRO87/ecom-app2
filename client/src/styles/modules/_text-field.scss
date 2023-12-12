@@ -77,6 +77,34 @@
    }
 }
 
+.label-container {
+   &.textarea {
+      .text-field {
+         padding: 27px 10px;
+      }
+      .text-field-container {
+         &::before {
+            bottom: 4px;
+         }
+      }
+      .label-text {
+         width: 97%;
+         z-index: 14;
+         top: 22px;
+         font-size: 1rem;
+         left: 0;
+         padding: 3px 0;
+         padding-left: 10px;
+         transition: background ease 0.3s, color ease 0.3s;
+         border-radius: 4px 0 0 0;
+         &.scroll-active {
+            color: #fff;
+            background: rgba(0, 0, 0, 0.6);
+         }
+      }
+   }
+}
+
 .error-msg {
    color: #d32f2f;
    margin-left: 1rem;

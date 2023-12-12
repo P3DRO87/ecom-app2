@@ -65,6 +65,14 @@ button {
    color: var(--primary);
 }
 
+.color-secondary {
+   color: var(--secondary);
+}
+
+.color-grey {
+   color: #7d7d7d;
+}
+
 .info-box {
    border-radius: 4px;
    border-bottom: 5px solid var(--primary);
@@ -87,6 +95,10 @@ button {
       padding-top: 15px;
       padding-bottom: 15px;
    }
+}
+
+.rounded-45px {
+   border-radius: 45px;
 }
 
 @keyframes fade-in {

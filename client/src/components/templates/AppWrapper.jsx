@@ -32,12 +32,15 @@ const AppWrapper = ({ children }) => {
    }, []);
 
    useEffect(() => {
-      const lsToken = Cookies.get("token");
+      const lsToken = localStorage.getItem("token");
 
       const fetchToken = async () => {
-         const [tokenData, error] = await renewToken(lsToken);
+         const [tokenData] = await renewToken(lsToken);
 
-         if (error) return Cookies.remove("token");
+         if (tokenData) {
+            Cookies.set("user", JSON.stringify(tokenData.user));
+            Cookies.set("token", lsToken);
+         }
 
          dispatch(authUser(tokenData.user || null));
       };

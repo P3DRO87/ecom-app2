@@ -10,7 +10,9 @@ export const getProduct = async ({ slug, serverUrl = "" }) => {
 
       return [data.product, null];
    } catch (error) {
-      return [null, error.message];
+      const errMsg = error?.response?.data.msg || error.message;
+
+      return [null, errMsg];
    }
 };
 
@@ -22,7 +24,9 @@ export const getAllProducts = async (category = "all") => {
 
       return [data.products, null];
    } catch (error) {
-      return [null, error.message];
+      const errMsg = error?.response?.data.msg || error.message;
+
+      return [null, errMsg];
    }
 };
 
@@ -34,6 +38,54 @@ export const searchProducts = async (query) => {
 
       return [data.products, null];
    } catch (error) {
-      return [null, error.message];
+      const errMsg = error?.response?.data.msg || error.message;
+
+      return [null, errMsg];
+   }
+};
+
+export const createProduct = async (product) => {
+   const URL = `${BASE_URL}/products/create`;
+
+   try {
+      const { data } = await axios.post(URL, product);
+
+      return [data.product, null];
+   } catch (error) {
+      const errMsg = error?.response?.data.msg || error.message;
+
+      return [null, errMsg];
+   }
+};
+
+export const updateProduct = async (id, product) => {
+   const URL = `${BASE_URL}/products/update/${id}`;
+
+   try {
+      const { data } = await axios.put(URL, product);
+
+      return [data.product, null];
+   } catch (error) {
+      const errMsg = error?.response?.data.msg || error.message;
+
+      return [null, errMsg];
+   }
+};
+
+export const uploadFiles = async (files) => {
+   const URL = `${BASE_URL}/uploads/images/`;
+
+   try {
+      for (const file of files) {
+         const { data } = await axios.put(URL, file);
+
+         console.log(data);
+      }
+
+      // return [data.product, null];
+   } catch (error) {
+      const errMsg = error?.response?.data.msg || error.message;
+
+      return [null, errMsg];
    }
 };

@@ -8,6 +8,8 @@ const Input = forwardRef(
          className = "",
          error = false,
          helperText = "",
+         isExternalFoucsActive,
+         onKeyUp = function () {},
          ...rest
       },
       ref
@@ -24,6 +26,12 @@ const Input = forwardRef(
          if (input.value) setIsFocusActive(true);
       }, []);
 
+      useEffect(() => {
+         if (isExternalFoucsActive === undefined) return;
+
+         setIsFocusActive(isExternalFoucsActive);
+      }, [isExternalFoucsActive]);
+
       return (
          <>
             <div className={`label-container${className ? ` ${className}` : ""}`}>
@@ -38,6 +46,7 @@ const Input = forwardRef(
                   <input
                      // ref={inputRef}
                      ref={ref}
+                     onKeyUp={onKeyUp}
                      {...rest}
                      onBlur={({ target }) => {
                         if (target.value) return;

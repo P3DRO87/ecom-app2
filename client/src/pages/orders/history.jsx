@@ -75,7 +75,7 @@ export const getServerSideProps = async ({ req }) => {
    if (!token || !orders) {
       return {
          redirect: {
-            destination: "/auth/login",
+            destination: `/auth/login?=p/orders`,
             permanent: false,
          },
       };

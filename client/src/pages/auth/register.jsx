@@ -35,6 +35,8 @@ const Register = () => {
 
       const { user, token } = registerRes;
 
+      localStorage.user = JSON.stringify(user);
+      localStorage.token = token;
       Cookies.set("user", JSON.stringify(user));
       Cookies.set("token", token);
 
